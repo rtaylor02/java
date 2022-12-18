@@ -3,7 +3,7 @@ package com.rtaylor.javacourse.collections.set;
 import java.util.*;
 
 /*
-Lessons:
+Key Lessons:
 #1 - Create an immutable Set
 #2 - Set can only have unique elements - no duplication. Exception: IllegalArgumentException
 #3 - Set has no index. Print result can result in any order.
@@ -23,6 +23,16 @@ Lessons:
       can take a Collection as the argument.
 #16 - Create a unique character collection in order of assignment from a list. Note: LinkedHashSet constructor
       can take a Collection as the argument.
+#17 - NavigableSet interface has lots of useful methods that based on Set and SortedSet interfaces. Thus, NavigableSet
+      is naturally unique and sorted. Any class implement NavigableSet has these properties. E.g. TreeSet.
+#17a - lower(a) - returns an element < a.
+#17b - floor(a) - returns an element <= a.
+#17c - ceiling(a) - returns an element >= a.
+#17d - higher(a) - returns an element > a.
+#17e - subset(a, b) - returns element between a (inclusive) and b (exclusive)
+#17f - subset(a, aa, b, bb) - variation of subset(a, b) with more control on inclusivity (aa, bb). True as inclusive.
+#17g - headSet(a) - returns elements < a (exclusive).
+#17h - tailSet(a) - returns elements > a (inclusive).
  */
 
 public class Main {
@@ -32,8 +42,9 @@ public class Main {
 //        new SetTrial().linkedHashSetExecute();
 //        new SetTrial().treeSetExecute();
 
-        new SetTrial().exerciseUniqueCharacterInNaturalOrdering(List.of('A', 'Z', 'A', 'B', 'Z', 'F'));
-        new SetTrial().exerciseUniqueCharacterInOrderOfAssignment(List.of('A', 'Z', 'A', 'B', 'Z', 'F'));
+//        new SetTrial().exerciseUniqueCharacterInNaturalOrdering(List.of('A', 'Z', 'A', 'B', 'Z', 'F'));
+//        new SetTrial().exerciseUniqueCharacterInOrderOfAssignment(List.of('A', 'Z', 'A', 'B', 'Z', 'F'));
+        new SetTrial().navigableSet(List.of(22,99,67,45, 82, 101, 78, 52));
     }
 }
 
@@ -101,6 +112,19 @@ class SetTrial {
     public void exerciseUniqueCharacterInOrderOfAssignment(List<Character> list) {
         LinkedHashSet<Character> linkedHashSet = new LinkedHashSet<>(list); // #16
         System.out.println(linkedHashSet);
+    }
+
+    public void navigableSet(List<Integer> list) {
+        TreeSet treeSet = new TreeSet(list);
+        System.out.println(treeSet);
+        System.out.println(treeSet.lower(78)); // #17a
+        System.out.println(treeSet.floor(78)); // #17b
+        System.out.println(treeSet.ceiling(78)); // #17c
+        System.out.println(treeSet.higher(78)); // #17d
+        System.out.println(treeSet.subSet(45, 99)); // #17e
+        System.out.println(treeSet.subSet(45, true, 99, true)); // #17f
+        System.out.println(treeSet.headSet(78)); // #17g
+        System.out.println(treeSet.tailSet(78)); // #17h
     }
 }
 
