@@ -8,12 +8,15 @@ Some Collection interfaces that Java provides:
 4) Map
  */
 
+import lombok.*;
+
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 //        new ListTrial().immutableListInterface();
-        new SortingList().execute();
+//        new SortingList().execute();
+        new SortingList().executeStudentSorting();
     }
 
 }
@@ -110,10 +113,29 @@ class SortingList {
         sortUsingCollections(listOfIntegers);
     }
 
-    private void sortUsingCollections(List<Integer> listToSort) {
+    public void executeStudentSorting() {
+        List<Student> students = new ArrayList<>(List.of(
+                new Student(11, "Tom Cruise"),
+                new Student(2, "Ken Kousen"),
+                new Student(3, "Andy Olsen"),
+                new Student(45, "Josh Long"),
+                new Student(4, "Josh Hornet")
+        ));
+
+        sortUsingCollections(students);
+    }
+
+    private void sortUsingCollections(List listToSort) {
         System.out.println("Before sorting: " + listToSort);
         Collections.sort(listToSort);
         System.out.println("After sorting: " + listToSort);
+    }
+
+    private record Student(int id, String name) implements Comparable<Student> {
+        @Override
+        public int compareTo(Student that) {
+            return Integer.compare(that.id, this.id);
+        }
     }
 }
 
