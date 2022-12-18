@@ -8,8 +8,6 @@ Some Collection interfaces that Java provides:
 4) Map
  */
 
-import lombok.*;
-
 import java.util.*;
 
 public class Main {
@@ -122,7 +120,11 @@ class SortingList {
                 new Student(4, "Josh Hornet")
         ));
 
-        sortUsingCollections(students);
+//        sortUsingCollections(students);
+        students.sort(new StudentComparatorAscending());
+        System.out.println(students);
+        students.sort(new StudentComparatorDescending());
+        System.out.println(students);
     }
 
     private void sortUsingCollections(List listToSort) {
@@ -134,7 +136,27 @@ class SortingList {
     private record Student(int id, String name) implements Comparable<Student> {
         @Override
         public int compareTo(Student that) {
-            return Integer.compare(that.id, this.id);
+            return Integer.compare(this.id, that.id);
+        }
+
+
+    }
+
+    // Inner class to allow flexible sorting Students by implementing Comparator interface
+    private class StudentComparatorAscending implements Comparator<Student> {
+
+        @Override
+        public int compare(Student thisStudent, Student thatStudent) {
+            return thisStudent.compareTo(thatStudent);
+        }
+    }
+
+    // Inner class to allow flexible sorting Students by implementing Comparator interface
+    private class StudentComparatorDescending implements Comparator<Student> {
+
+        @Override
+        public int compare(Student thisStudent, Student thatStudent) {
+            return thatStudent.compareTo(thisStudent);
         }
     }
 }
