@@ -1,10 +1,10 @@
-package com.rtaylor.javacourse.collections.set;
+package com.rtaylor.javacourse.collection.set;
 
 import java.util.*;
 
 /*
 Key Lessons:
-#1 - Create an immutable Set
+#1 - Create an immutable Set with of() method. Note: any collection created with of() is immutable.
 #2 - Set can only have unique elements - no duplication. Exception: IllegalArgumentException
 #3 - Set has no index. Print result can result in any order.
 #4 - Set is immutable; addition or removal are prohibited. For mutable set, use HashSet, LinkedHashSet, or TreeSet

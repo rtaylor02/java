@@ -1,4 +1,4 @@
-package com.rtaylor.javacourse.collections.queue;
+package com.rtaylor.javacourse.collection.queue;
 
 import java.util.*;
 

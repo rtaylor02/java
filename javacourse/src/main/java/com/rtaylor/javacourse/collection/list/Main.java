@@ -1,4 +1,4 @@
-package com.rtaylor.javacourse.collections.list;
+package com.rtaylor.javacourse.collection.list;
 
 /*
 Some Collection interfaces that Java provides:
